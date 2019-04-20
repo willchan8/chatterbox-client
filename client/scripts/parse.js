@@ -11,9 +11,6 @@ var Parse = {
       data: JSON.stringify(message),
       contentType: 'application/json',
       success: successCB,
-      // function (data) {
-      //   console.log('chatterbox: Message sent');
-      // },
       error: errorCB || function (data) {
         console.error('chatterbox: Failed to send message', data);
       }
