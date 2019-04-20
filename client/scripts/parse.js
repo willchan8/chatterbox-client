@@ -10,7 +10,7 @@ var Parse = {
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
-      success: successCB,
+      success: successCB, // this callback will get invoked if the request was successful
       error: errorCB || function (data) {
         console.error('chatterbox: Failed to send message', data);
       }
@@ -23,7 +23,7 @@ var Parse = {
       type: 'GET',
       data: { order: '-createdAt' },
       contentType: 'application/json',
-      success: successCB,
+      success: successCB, // this callback will get invoked if the request was successful
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
       }
