@@ -4,9 +4,7 @@ var MessagesView = {
 
   initialize: function() {
     Parse.readAll((data) => {
-
-        MessagesView.render(data.results);
-        console.log(data.results);
+      MessagesView.render(data.results);
     });
   },
   render: function(arr) {
@@ -26,7 +24,6 @@ var MessagesView = {
       message['username'] = 'anonymous';
     }
     MessagesView.$chats.append(MessageView.render(message));
-    
   },
 
 };
