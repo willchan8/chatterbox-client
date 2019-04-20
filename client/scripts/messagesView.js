@@ -3,20 +3,30 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-    App.fetch(function(data){
-      for (var key in data) {
-        MessagesView.renderMessages(data);
-      });
+    Parse.readAll((data) => {
+
+        MessagesView.render(data.results);
+        console.log(data.results);
+    });
+  },
+  render: function(arr) {
+    for (var i = 0; i < arr.length; i++) {
+      MessagesView.renderMessage(arr[i]);
+    }
   },
 
-  renderMessages: function(data) {
-
-    var html = "";
+  renderMessage: function(message) {
+    
+    // var html = "";
     //loop through data retrieved via ajax call
-    for (var i = 0; i < data.results.length; i++) {
-      html = MessageView.render(data.results[i]);
-      $("#chats").append(html);
-    }  
+    if (!message['text']) {
+      message['text'] = '';
+    }
+    if (!message['username']) {
+      message['username'] = 'anonymous';
+    }
+    MessagesView.$chats.append(MessageView.render(message));
+    
   },
 
 };
