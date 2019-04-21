@@ -28,7 +28,7 @@ var MessagesView = {
 
       html.find('.username').on('click', function() {
         // Insert event to add username as friend
-        Friends.toggleStatus();
+        Friends.toggleStatus($(this).text());
       });
     }
   },

@@ -1,8 +1,9 @@
 var Friends = {
     
-    toggleStatus : function(){
+    toggleStatus : function(friend){
         // toggles username status
-        console.log('added friend!!!!');
-    },
-
+        
+        Friends[friend] = (!Friends[friend] ? true : false)
+    
+    }
 };
