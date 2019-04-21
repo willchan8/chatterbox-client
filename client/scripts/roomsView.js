@@ -2,13 +2,15 @@ var RoomsView = {
 
   $button: $('#rooms button'),
   $select: $('#rooms select'),
-
+ 
   initialize: function() {
     RoomsView.$button.on('click', function() {
       // Insert event to prompt user to add a room name that gets passed to the select dropdown
       var roomname = prompt("Please enter a room name");
-      RoomsView.renderRoom(roomname);
-      console.log('roomname is', roomname);
+      
+      Rooms.render(roomname);
+      
+
     });
   },
 
@@ -18,8 +20,10 @@ var RoomsView = {
   // renderRoom function
   renderRoom: function(room) {
     console.log('room is', room);
-    var html = $(Rooms.render(room))
-    RoomsView.$select.append($(html));
+    // let html = $(Rooms.render(room))
+    // var html = Rooms.render(room) 
+    console.log('html',html)
+    // RoomsView.$select.append((Rooms.render(room)));
   }
 };
 
