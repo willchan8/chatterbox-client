@@ -27,7 +27,6 @@ var MessagesView = {
       MessagesView.$chats.append(html);
 
       html.find('.username').on('click', function() {
-        // Insert event to add username as friend
         Friends.toggleStatus($(this).text());
       });
     }

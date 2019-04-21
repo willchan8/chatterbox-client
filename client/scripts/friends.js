@@ -1,9 +1,10 @@
 var Friends = {
-    
-    toggleStatus : function(friend){
-        // toggles username status
-        
-        Friends[friend] = (!Friends[friend] ? true : false)
-    
-    }
+  
+  friendsContainer: {},
+
+  toggleStatus: function(friend) {
+    // toggles username status
+    Friends.friendsContainer[friend] = (!Friends.friendsContainer[friend] ? true : false);
+  }
+
 };

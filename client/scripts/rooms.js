@@ -1,15 +1,9 @@
 var Rooms = {
 
-    // render: _.template(`
-    // <option><%- room %></option>
-    // `),
-    render: function (val) {
-        var $newRoom = $(`<option value ='room'>${val}</option>`);
-        RoomsView.$select.append($newRoom);
-    },
+  roomsContainer: {},
 
-    add : function(roomname){
-        // send created room to the server
-        console.log(roomname);
-    },
+  add: function(roomName) {
+    Rooms.roomsContainer[roomName] = roomName;
+    RoomsView.renderRoom(roomName);
+  },
 };

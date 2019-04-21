@@ -3,24 +3,27 @@ var FormView = {
   $form: $('form'),
 
   initialize: function() {
-    FormView.$form.on('submit', FormView.handleSubmit) 
-      // Insert event to add username as friend
+    FormView.$form.on('submit', FormView.handleSubmit);
   },
 
   handleSubmit: function(event) {
-    // Stop the browser from submitting the form
-  event.preventDefault();
+  // Stop the browser from submitting the form
+    event.preventDefault();
 
-  var message = {
-    username : App.username, // username
+    var message = {
+      username: App.username, // username
 
-    text : $('form #message').val(), // text
-  
-    roomname : "lobby" // roomname
-  }
+      text: $('form #message').val(), // text
 
-  Parse.create(message);
-    // console.log($(this).text());
+      roomname: $('#rooms select').val() || 'Room Test' // roomname
+    };
+
+    Parse.create(message, (data) => {
+
+    });
+
+    // Refresh
+    // App.fetch(Messages.refresh(data));
   },
 
   setStatus: function(active) {

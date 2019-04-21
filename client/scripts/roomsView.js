@@ -5,28 +5,16 @@ var RoomsView = {
  
   initialize: function() {
     RoomsView.$button.on('click', function() {
-      // Insert event to prompt user to add a room name that gets passed to the select dropdown
-      var roomname = prompt("Please enter a room name");
-      
-      Rooms.render(roomname);
-      
+      // Insert event to prompt user to add a room name that gets passed to the select dropdown via renderRoom function
+      var newRoom = prompt('Please enter a room name');
 
+      // Add room to container
+      Rooms.add(newRoom);
     });
   },
 
-  render: function() {
-  },
-  
-  // renderRoom function
-  renderRoom: function(room) {
-    console.log('room is', room);
-    // let html = $(Rooms.render(room))
-    // var html = Rooms.render(room) 
-    console.log('html',html)
-    // RoomsView.$select.append((Rooms.render(room)));
+  renderRoom: function(newRoom) {
+    var $roomOption = $(`<option value ='room'>${newRoom}</option>`);
+    RoomsView.$select.append($roomOption);
   }
 };
-
-
-// var html = $(MessageView.render(message));
-// MessagesView.$chats.append(html);
