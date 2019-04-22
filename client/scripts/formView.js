@@ -12,18 +12,13 @@ var FormView = {
 
     var message = {
       username: App.username, // username
-
       text: $('form #message').val(), // text
-
       roomname: $('#rooms select').val() || 'Room Test' // roomname
     };
 
-    Parse.create(message, (data) => {
-
+    Parse.create(message, function() {
+      MessagesView.renderNewMessage(message);
     });
-
-    // Refresh
-    // App.fetch(Messages.refresh(data));
   },
 
   setStatus: function(active) {

@@ -7,16 +7,13 @@ var MessagesView = {
     data.results array into the MessagesView.render callback */
     Parse.readAll((data) => {
       MessagesView.render(data); // Invoke the render function on the data object
-      // $('.username').on('click', function() {
-      //   alert('hello');
-      // })
     });
   },
   
   render: function(data) {
     // Iterate through the array of objects (used ES6 for...of method), rendering each message onto the DOM 
-    for (let msgObj of data.results) {
-      MessagesView.renderMessage(msgObj);
+    for (let message of data.results) {
+      MessagesView.renderMessage(message);
     }
   },
 
@@ -26,10 +23,23 @@ var MessagesView = {
       var html = $(MessageView.render(message));
       MessagesView.$chats.append(html);
 
+      // toggle friend status upon clicking username
       html.find('.username').on('click', function() {
-        Friends.toggleStatus($(this).text());
+        Friends.toggleStatus($(this));
       });
     }
   },
 
+  renderNewMessage: function(message) {
+    // prepends newly added messages (see formView.js)
+    if (message.username && message.text) {
+      var html = $(MessageView.render(message));
+      MessagesView.$chats.prepend(html);
+
+      // toggle friends status upon clicking username
+      html.find('.username').on('click', function() {
+        Friends.toggleStatus($(this));
+      });
+    }
+  }
 };

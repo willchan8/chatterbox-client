@@ -14,7 +14,9 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
+    
+    // Auto Refresh
+    setInterval(App.fetch, 10000);
   },
 
   fetch: function(callback = ()=>{}) {
@@ -34,5 +36,9 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
+  },
+
+  initializeAutoRefresh: function() {
+
   }
 };

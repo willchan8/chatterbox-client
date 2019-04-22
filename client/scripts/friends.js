@@ -2,9 +2,14 @@ var Friends = {
   
   friendsContainer: {},
 
+  // Adds friends to container and toggles true and false
   toggleStatus: function(friend) {
-    // toggles username status
-    Friends.friendsContainer[friend] = (!Friends.friendsContainer[friend] ? true : false);
-  }
+    Friends.friendsContainer[friend.text()] = (!Friends.friendsContainer[friend.text()] ? true : false);
 
+    if (Friends.friendsContainer[friend.text()] === true) {
+      friend.parent().addClass('friend');
+    } else {
+      friend.parent().removeClass('friend');
+    }
+  }
 };
